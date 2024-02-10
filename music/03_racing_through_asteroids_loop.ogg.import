@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/03_racing_through_asteroids_loop.ogg-f98ad5a23b96beb97f17a612329e8bfd.oggstr"
+
+[deps]
+
+source_file="res://music/03_racing_through_asteroids_loop.ogg"
+dest_files=[ "res://.import/03_racing_through_asteroids_loop.ogg-f98ad5a23b96beb97f17a612329e8bfd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

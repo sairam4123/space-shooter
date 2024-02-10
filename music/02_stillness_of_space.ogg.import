@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/02_stillness_of_space.ogg-69d3eca0c69d96069a310c0f8cd67b98.oggstr"
+
+[deps]
+
+source_file="res://music/02_stillness_of_space.ogg"
+dest_files=[ "res://.import/02_stillness_of_space.ogg-69d3eca0c69d96069a310c0f8cd67b98.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

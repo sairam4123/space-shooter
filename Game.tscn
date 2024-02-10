@@ -1,0 +1,114 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://EnemySpawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://spaceshooter/Backgrounds/blue.png" type="Texture" id=4]
+[ext_resource path="res://music/06_battle_in_space_loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Game.gd" type="Script" id=6]
+[ext_resource path="res://ExplosionSpawner.gd" type="Script" id=7]
+[ext_resource path="res://Background.gd" type="Script" id=8]
+[ext_resource path="res://BackgroundHandler.gd" type="Script" id=9]
+[ext_resource path="res://PickupSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://pickup_effects/HealthRegenPickup.tscn" type="PackedScene" id=11]
+[ext_resource path="res://pickup_effects/HealthPickup.tscn" type="PackedScene" id=12]
+[ext_resource path="res://pickup_effects/GunBulletPickup.tscn" type="PackedScene" id=13]
+[ext_resource path="res://enemies/EnemyLevel4.tscn" type="PackedScene" id=14]
+[ext_resource path="res://enemies/EnemyIntermediate.tscn" type="PackedScene" id=15]
+[ext_resource path="res://enemies/EnemyBasic.tscn" type="PackedScene" id=16]
+[ext_resource path="res://enemies/EnemyAdvanced.tscn" type="PackedScene" id=17]
+[ext_resource path="res://enemies/EnemyLevel5.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/4 = true
+glow_levels/5 = false
+glow_blend_mode = 0
+
+[node name="Game" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="BackgroundHandler" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1024.0
+margin_bottom = 600.0
+script = ExtResource( 9 )
+speed = 500
+
+[node name="Background" type="TextureRect" parent="BackgroundHandler"]
+margin_top = -3138.0
+margin_right = 1024.0
+margin_bottom = 162.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+script = ExtResource( 8 )
+speed = 210
+
+[node name="Background2" type="TextureRect" parent="BackgroundHandler"]
+margin_top = 159.0
+margin_right = 1024.0
+margin_bottom = 3459.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+script = ExtResource( 8 )
+speed = 210
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512, 655 )
+joystick_node_path = NodePath("../CanvasLayer/Control/MarginContainer/VBoxContainer/MarginContainer/Controls/Joystick")
+
+[node name="Timer" parent="Player" index="3"]
+wait_time = 0.15
+
+[node name="Listener2D" type="Listener2D" parent="Player"]
+
+[node name="EnemySpawner" parent="." instance=ExtResource( 3 )]
+enemies = [ ExtResource( 16 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 14 ), ExtResource( 18 ) ]
+enemy_container_node = NodePath("../Enemy")
+bullet_container_node = NodePath("../Bullets")
+
+[node name="PickupSpawner" parent="." instance=ExtResource( 10 )]
+pickup_effects = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+pickup_effect_spawn_rate_dict = {
+"regen": 0.2
+}
+pickup_container_np = NodePath("../Pickup")
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Pickup" type="Node2D" parent="."]
+
+[node name="Enemy" type="Node2D" parent="."]
+
+[node name="Explosions" type="Node2D" parent="."]
+
+[node name="ExplosionSpawner" type="Node2D" parent="."]
+position = Vector2( 512, 300 )
+scale = Vector2( 4, 2.34375 )
+script = ExtResource( 7 )
+explosions_np = NodePath("../Explosions")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -1.412
+
+[connection signal="health_changed" from="Player" to="CanvasLayer/Control" method="_on_Player_health_changed"]
+[connection signal="regen_changed" from="Player" to="CanvasLayer/Control" method="_on_Player_regen_changed"]
+
+[editable path="Player"]
+[editable path="CanvasLayer/Control"]

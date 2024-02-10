@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/04_emergency_no_alarm.ogg-76a9cba15532e5b3213c19322eeeca3c.oggstr"
+
+[deps]
+
+source_file="res://music/04_emergency_no_alarm.ogg"
+dest_files=[ "res://.import/04_emergency_no_alarm.ogg-76a9cba15532e5b3213c19322eeeca3c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
