@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://uipack_fixed (1)/Bonus/click1.ogg" type="AudioStream" id=1]
-[ext_resource path="res://uipack_fixed (1)/PNG/grey_panel.png" type="Texture" id=2]
+[ext_resource path="res://Settings.gd" type="Script" id=2]
 [ext_resource path="res://uipack_fixed (1)/PNG/grey_button00.png" type="Texture" id=3]
 [ext_resource path="res://uipack_fixed (1)/PNG/grey_button01.png" type="Texture" id=4]
 [ext_resource path="res://gameicons (1)/PNG/Black/2x/save.png" type="Texture" id=5]
@@ -27,36 +27,35 @@ font_data = ExtResource( 6 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 
-[node name="PanelContainer" type="NinePatchRect" parent="."]
-self_modulate = Color( 0.290196, 0.278431, 0.278431, 1 )
+[node name="PanelContainer" type="PanelContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0.352941 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
 custom_constants/margin_right = 27
 custom_constants/margin_top = 20
 custom_constants/margin_left = 27
 custom_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 margin_left = 27.0
 margin_top = 20.0
-margin_right = 997.0
-margin_bottom = 580.0
+margin_right = 983.0
+margin_bottom = 566.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_right = 970.0
-margin_bottom = 64.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 956.0
+margin_bottom = 62.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.15
 custom_fonts/font = SubResource( 5 )
@@ -64,81 +63,81 @@ text = "Settings"
 align = 1
 valign = 1
 
-[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 68.0
-margin_right = 970.0
-margin_bottom = 496.0
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 956.0
+margin_bottom = 482.0
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer3"]
-margin_right = 970.0
-margin_bottom = 428.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+margin_right = 956.0
+margin_bottom = 416.0
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 6 )
 text = "WORK IN PROGRESS"
 align = 1
 valign = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 visible = false
-margin_top = 68.0
-margin_right = 970.0
-margin_bottom = 496.0
+margin_top = 272.0
+margin_right = 956.0
+margin_bottom = 482.0
 size_flags_vertical = 3
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
 custom_constants/margin_bottom = 10
 
-[node name="HSplitContainer" type="HSplitContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 960.0
-margin_bottom = 418.0
+margin_right = 946.0
+margin_bottom = 200.0
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HSplitContainer"]
-margin_right = 184.0
-margin_bottom = 408.0
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HSplitContainer"]
+margin_right = 181.0
+margin_bottom = 190.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HSplitContainer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HSplitContainer/PanelContainer"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 177.0
-margin_bottom = 401.0
+margin_right = 174.0
+margin_bottom = 183.0
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HSplitContainer/PanelContainer/VBoxContainer"]
-margin_right = 170.0
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/HSplitContainer/PanelContainer/VBoxContainer"]
+margin_right = 167.0
 margin_bottom = 14.0
 text = "CATEGORIES"
 align = 1
 valign = 1
 
-[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer/HSplitContainer"]
-margin_left = 196.0
-margin_right = 950.0
-margin_bottom = 408.0
+[node name="PanelContainer2" type="PanelContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HSplitContainer"]
+margin_left = 193.0
+margin_right = 936.0
+margin_bottom = 190.0
 size_flags_horizontal = 3
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-margin_top = 500.0
-margin_right = 970.0
-margin_bottom = 560.0
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 486.0
+margin_right = 956.0
+margin_bottom = 546.0
 custom_constants/margin_right = 0
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer2"]
 margin_top = 5.0
-margin_right = 970.0
+margin_right = 956.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 50 )
 custom_constants/separation = 100
 alignment = 1
 
-[node name="TextureButton2" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 visible = false
 margin_right = 188.0
 margin_bottom = 50.0
@@ -149,7 +148,7 @@ texture_pressed = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
-[node name="Exit" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton2"]
+[node name="Exit" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton2"]
 margin_left = 8.0
 margin_top = 5.0
 margin_right = 40.0
@@ -158,12 +157,12 @@ texture = ExtResource( 8 )
 expand = true
 stretch_mode = 1
 
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton2"]
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton2"]
 stream = ExtResource( 1 )
 
-[node name="SettingsButton" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
-margin_left = 387.0
-margin_right = 435.0
+[node name="SettingsButton" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 380.0
+margin_right = 428.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 48, 48 )
 size_flags_horizontal = 4
@@ -173,7 +172,7 @@ texture_hover = ExtResource( 10 )
 expand = true
 stretch_mode = 3
 
-[node name="Exit" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton"]
+[node name="Exit" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 39.0
@@ -182,12 +181,12 @@ texture = ExtResource( 5 )
 expand = true
 stretch_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton"]
 stream = ExtResource( 1 )
 
-[node name="SettingsButton2" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
-margin_left = 535.0
-margin_right = 583.0
+[node name="SettingsButton2" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+margin_left = 528.0
+margin_right = 576.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 48, 48 )
 size_flags_horizontal = 4
@@ -197,7 +196,7 @@ texture_hover = ExtResource( 10 )
 expand = true
 stretch_mode = 3
 
-[node name="Exit" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton2"]
+[node name="Exit" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton2"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 39.0
@@ -206,10 +205,10 @@ texture = ExtResource( 12 )
 expand = true
 stretch_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton2"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton2"]
 stream = ExtResource( 1 )
 
-[node name="TextureButton3" type="TextureButton" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
+[node name="TextureButton3" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer"]
 visible = false
 margin_left = 731.0
 margin_right = 919.0
@@ -221,7 +220,7 @@ texture_pressed = ExtResource( 3 )
 expand = true
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton3"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 150, 28 )
@@ -232,5 +231,7 @@ text = "RESET"
 align = 1
 valign = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton3"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/TextureButton3"]
 stream = ExtResource( 1 )
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer2/HBoxContainer/SettingsButton" to="." method="_on_SettingsButton_pressed"]

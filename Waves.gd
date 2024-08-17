@@ -9,8 +9,8 @@ func _on_Timer_timeout():
 	if wave % 4 == 0: # every 4th wave, increase the chance of enemy change
 		wave += 1
 		enemy_random_chance += rand_range(0.05, 0.35)
-		if fract(enemy_random_chance) >= 1.0:  # enemy change detected
-			enemy_spawn_time = 0.9
+		if fract(enemy_random_chance) >= 0.95:  # enemy change detected
+			enemy_spawn_time = 1.85
 	else:
 		wave += 1
 	enemy_spawn_time -= rand_range(0.01, 0.05)

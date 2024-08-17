@@ -76,6 +76,9 @@ _global_script_class_icons={
 
 config/name="Space-Shooter"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://SSICONv3.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://icon.png"
 
 [autoload]
@@ -84,6 +87,7 @@ EventBus="*res://EventBus.gd"
 InputManager="*res://InputManager.gd"
 Waves="*res://Waves.tscn"
 GlobalEnums="*res://GlobalEnums.gd"
+UIEventBus="*res://UIEventBus.gd"
 
 [display]
 
@@ -125,9 +129,10 @@ fire={
 
 [input_devices]
 
+pointing/emulate_touch_from_mouse=true
 pointing/emulate_mouse_from_touch=false
 pointing/emulate_mouse_from_touch.mobile=true
-pointing/emulate_touch_from_mouse.editor=false
+pointing/emulate_touch_from_mouse.editor=true
 
 [layer_names]
 

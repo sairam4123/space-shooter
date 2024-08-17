@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://enemies/EnemyBasic.tscn" type="PackedScene" id=16]
 [ext_resource path="res://enemies/EnemyAdvanced.tscn" type="PackedScene" id=17]
 [ext_resource path="res://enemies/EnemyLevel5.tscn" type="PackedScene" id=18]
+[ext_resource path="res://pickup_effects/AmmoPickup.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Environment" id=1]
 background_mode = 4
@@ -72,7 +73,8 @@ enemy_container_node = NodePath("../Enemy")
 bullet_container_node = NodePath("../Bullets")
 
 [node name="PickupSpawner" parent="." instance=ExtResource( 10 )]
-pickup_effects = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ]
+pickup_effects = [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 19 ) ]
+names = [ "regen", "health", "gun", "ammo" ]
 pickup_effect_spawn_rate_dict = {
 "regen": 0.2
 }
@@ -107,6 +109,7 @@ __meta__ = {
 stream = ExtResource( 5 )
 volume_db = -1.412
 
+[connection signal="ammo_changed" from="Player" to="CanvasLayer/Control" method="_on_Player_ammo_changed"]
 [connection signal="health_changed" from="Player" to="CanvasLayer/Control" method="_on_Player_health_changed"]
 [connection signal="regen_changed" from="Player" to="CanvasLayer/Control" method="_on_Player_regen_changed"]
 

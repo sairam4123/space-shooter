@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PickupEffect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://spaceshooter/PNG/Power-ups/things_silver.png" type="Texture" id=2]
+[ext_resource path="res://spaceshooter/PNG/Power-ups/powerupBlue.png" type="Texture" id=3]
+
+[node name="PickupEffect" instance=ExtResource( 1 )]
+type = "ammo"
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+
+[node name="PillBlue" parent="Sprite" index="0"]
+visible = true
+texture = ExtResource( 2 )
+
+[node name="ExposedSprite" parent="." index="3"]
+texture = ExtResource( 2 )

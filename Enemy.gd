@@ -18,11 +18,18 @@ export var max_health = 100.0
 export var bullet_time = 0.5
 export var speed = 300.0
 var velocity = Vector2()
-
+const ammo_spawn_prob = {
+	EnemyType.BASIC: 30,
+	EnemyType.INTERMEDIATE: 20,
+	EnemyType.ADVANCED: 13,
+	EnemyType.LEVEL_4: 7,
+	EnemyType.LEVEL_5: 5
+	
+}
 func _ready():
 	$Timer.start(bullet_time / (health/max_health))
 # warning-ignore:return_value_discarded
-	EventBus.connect("back_to_main_menu", self, "_back_to_main_menu")
+	EventBus.connect("game_stop", self, "_game_stop")
 
 func _physics_process(delta):
 # warning-ignore:return_value_discarded
@@ -55,7 +62,9 @@ func _on_Area2D_body_entered(body):
 	if health <= 0:
 		var eve = EnemyKilledEvent.new(type, position)
 		EventBus.emit_signal("enemy_killed", eve)
+		if randi() % ammo_spawn_prob[type] == 0:
+			EventBus.emit_signal("spawn_pickup", "ammo", body.position)
 		queue_free()
 
-func _back_to_main_menu():
+func _game_stop():
 	queue_free()

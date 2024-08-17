@@ -11,7 +11,7 @@ var yielded = true
 
 func _ready():
 # warning-ignore:return_value_discarded
-	EventBus.connect("back_to_main_menu", self, "_back_to_main_menu")
+	EventBus.connect("game_stop", self, "_game_stop")
 
 func _physics_process(delta):
 	var collision = move_and_collide(velocity*speed*delta)
@@ -21,5 +21,5 @@ func _physics_process(delta):
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
-func _back_to_main_menu():
+func _game_stop():
 	queue_free()

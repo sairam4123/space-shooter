@@ -4,8 +4,7 @@ extends Node
 # warning-ignore:unused_signal
 signal enemy_killed(event)
 
-# warning-ignore:unused_signal
-signal back_to_main_menu
+signal game_stop()
 
 # warning-ignore:unused_signal
 signal enemy_damaged(enemy)
@@ -23,3 +22,5 @@ signal game_start()
 signal game_restart()
 
 signal player_resurrected()
+
+signal spawn_pickup(type, pos)

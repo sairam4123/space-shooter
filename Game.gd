@@ -8,7 +8,7 @@ export var background_speed = 210 setget set_speed
 func _ready():
 	set("background_speed", background_speed)
 # warning-ignore:return_value_discarded
-	EventBus.connect("back_to_main_menu", self, "_back_to_main_menu")
+	EventBus.connect("game_stop", self, "_game_stop")
 	EventBus.connect("player_resurrected", self, "move_player_to_y", [545.0])
 	$Player.visible = not disable_player
 	$CanvasLayer.visible = not disable_player
@@ -23,7 +23,7 @@ func _ready():
 func _process(delta):
 	self.background_speed += (Waves.background_speed-background_speed) * delta
 
-func _back_to_main_menu():
+func _game_stop():
 	$AudioStreamPlayer.stop()
 
 func move_player_to_y(new_y):

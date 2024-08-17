@@ -25,5 +25,5 @@ func _on_TextureButton_pressed():
 
 func _on_TextureButton2_pressed():
 	$"%Sound2".play()
-	EventBus.emit_signal("back_to_main_menu")
+	EventBus.emit_signal("game_stop")
 	hide()

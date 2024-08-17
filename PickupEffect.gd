@@ -11,9 +11,6 @@ var game
 func _ready():
 	$Sprite.show()
 	$ExposedSprite.hide()
-
-	if randi() % 25 == 0:
-		open()
 	
 func _physics_process(delta):
 	if game:

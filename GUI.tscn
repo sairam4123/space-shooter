@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://gameicons-expansion (1)/Game icons (base)/PNG/White/2x/home.png" type="Texture" id=1]
 [ext_resource path="res://spaceshooter/PNG/UI/playerLife1_blue.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://uipack_fixed (1)/PNG/blue_button09.png" type="Texture" id=4]
 [ext_resource path="res://GUI.gd" type="Script" id=5]
 [ext_resource path="res://uipack_fixed (1)/PNG/blue_button10.png" type="Texture" id=6]
+[ext_resource path="res://spaceshooter/PNG/Power-ups/things_silver.png" type="Texture" id=7]
 [ext_resource path="res://onscreencontrols/Sprites/transparentDark/transparentDark45.png" type="Texture" id=8]
 [ext_resource path="res://Joystick/Joystick.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Button.gd" type="Script" id=10]
@@ -70,9 +71,8 @@ stretch_mode = 1
 
 [node name="HealthBar" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopBar"]
 margin_left = 65.0
-margin_right = 795.0
+margin_right = 135.0
 margin_bottom = 49.0
-size_flags_horizontal = 3
 custom_constants/separation = 10
 __meta__ = {
 "_edit_use_anchors_": false
@@ -102,6 +102,39 @@ __meta__ = {
 }
 
 [node name="HealthBarLabel" type="Label" parent="MarginContainer/VBoxContainer/TopBar/HealthBar"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 43.0
+margin_right = 70.0
+margin_bottom = 49.0
+size_flags_vertical = 1
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 1
+valign = 1
+
+[node name="AmmoCount" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TopBar"]
+margin_left = 151.0
+margin_right = 795.0
+margin_bottom = 49.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AmmoIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/TopBar/AmmoCount"]
+unique_name_in_owner = true
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 33.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 33, 25 )
+rect_pivot_offset = Vector2( 19, 19 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="AmmoLabel" type="Label" parent="MarginContainer/VBoxContainer/TopBar/AmmoCount"]
 unique_name_in_owner = true
 modulate = Color( 1, 1, 1, 0 )
 margin_left = 43.0
@@ -168,5 +201,8 @@ margin_right = 934.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 128, 128 )
 size_flags_horizontal = 10
+joystick_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/HomeButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/MarginContainer/Controls/Fire" to="MarginContainer/VBoxContainer/MarginContainer/Controls/Fire" method="_on_Fire_button_down"]
+[connection signal="button_up" from="MarginContainer/VBoxContainer/MarginContainer/Controls/Fire" to="MarginContainer/VBoxContainer/MarginContainer/Controls/Fire" method="_on_Fire_button_up"]

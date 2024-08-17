@@ -7,7 +7,7 @@ var current_game
 func _ready():
 	_start_menu_game()
 # warning-ignore:return_value_discarded
-	EventBus.connect("back_to_main_menu", self, "end_game")
+	EventBus.connect("game_stop", self, "end_game")
 	EventBus.connect("game_restart", self, "restart_game")
 
 func restart_game():

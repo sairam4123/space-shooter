@@ -3,7 +3,8 @@ extends Control
 func _ready():
 	open_animation()
 # warning-ignore:return_value_discarded
-	EventBus.connect("back_to_main_menu", self, "back_to_main_menu")
+	EventBus.connect("game_stop", self, "on_game_stop")
+	UIEventBus.connect("main_menu", self, "_main_menu")
 
 func _on_TextureButton_pressed():
 	hide()
@@ -13,10 +14,22 @@ func _on_TextureButton_pressed():
 	set_process_input(false)
 	$AudioStreamPlayer.stop()
 
-func back_to_main_menu():
+
+func _on_SettingsButton_pressed():
+	hide()
+	set_process_input(false)
+	UIEventBus.emit_signal("settings_opened")
+
+
+func on_game_stop():
 	show()
 	set_process_input(true)
 	$AudioStreamPlayer.play()
+
+func _main_menu():
+	show()
+	set_process_input(true)
+#	$AudioStreamPlayer.play()
 
 
 func _on_ExitButton_pressed():
@@ -26,11 +39,12 @@ func _on_ExitButton_pressed():
 func open_animation():
 	var anim = create_tween()
 	anim.tween_interval(0.25)
-	anim.tween_property($"%Title", "modulate:a", 1.0, 0.5).from(0.0)
-	anim.parallel().tween_property($"%Title", "percent_visible", 1.0, 0.5).from(0.0)
-	anim.tween_property($"%StartButton", "modulate:a", 1.0, 0.5).from(0.0)
+	anim.tween_property($"%Title", "modulate:a", 1.0, 0.45).from(0.0)
+	anim.parallel().tween_property($"%Title", "percent_visible", 1.0, 0.45).from(0.0)
+	anim.tween_property($"%StartButton", "modulate:a", 1.0, 0.25).from(0.0)
 	for child in $"%HBoxContainer".get_children():
 		anim.tween_property(child, "modulate:a", 1.0, 0.25).from(0.0)
-	anim.tween_property($"%Credits", "modulate:a", 0.32, 0.25).from(0.0)
+	anim.tween_property($"%Credits", "modulate:a", 0.35, 0.15).from(0.0)
 	anim.tween_property($"%Sign", "modulate:a", 1.0, 0.25).from(0.0)
 	
+
